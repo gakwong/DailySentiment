@@ -445,6 +445,8 @@ https://templatemo.com/tm-521-get-ready
 
     .menu-items {
       margin: 100px 0;
+      background: #37515F;
+      transform: skewY(40deg);
     }
 
     .countdown span {
