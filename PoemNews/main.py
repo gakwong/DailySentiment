@@ -22,7 +22,7 @@ def main():
         print(data.to_string())
         title = get_title(data, 0)
         url = get_link(data, 0)
-        sentiment = get_sentiment(data)
+        sentiment = np.round(get_sentiment(data),5)
         return render_template("index.html", headline = title, link = url, sentiment = sentiment)
     else:
         #a = get database info
@@ -30,7 +30,7 @@ def main():
         print(data.to_string())
         title = get_title(data, 0)
         url = get_link(data, 0)
-        sentiment = get_sentiment(data)
+        sentiment = np.round(get_sentiment(data))
         #hlOneImg = data.iloc[0]['title']
         #hlTwoImg = data.iloc[1]['title']
         #imgscr.main(hlOneImg);
