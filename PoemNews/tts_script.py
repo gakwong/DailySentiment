@@ -1,3 +1,4 @@
+"""
 from google.cloud import texttospeech
 
 def main( phrase ):
@@ -26,3 +27,4 @@ def main( phrase ):
         # Write the response to the output file.
         out.write(response.audio_content)
         print('Audio content written to file "output.mp3"')
+"""

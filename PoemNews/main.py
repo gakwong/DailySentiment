@@ -8,7 +8,7 @@ import numpy as np
 from . import webscrape_script as wbscr
 from . import image_script as imgscr
 from . import nlanguage_script as langscr
-from . import tts_script as ttsscr
+#from . import tts_script as ttsscr
 
 #app = Flask(__name__)
 bp = Blueprint('main', __name__)
@@ -17,7 +17,7 @@ bp = Blueprint('main', __name__)
 def main():
     if request.method == 'POST':
         newsub = request.form['subreddit']
-        print(newsub)
+        #print(newsub)
         data = runWebscrape(newsub)
         print(data.to_string())
         title = get_title(data, 0)
@@ -37,6 +37,10 @@ def main():
         #imgscr.main(hlTwoImg);
         return render_template('index.html', headline = title, link = url, sentiment = sentiment)
 
+@bp.route("/method")
+def method():
+    return render_template('method.html')
+
 def runWebscrape( subreddit ):
     dict = wbscr.main(subreddit)
     return dict
@@ -45,8 +49,8 @@ def runWebscrape( subreddit ):
 def runLangScript( phrase ):
     return langscr.main( phrase )
 
-def runTTSScript( phrase ):
-    ttsscr.main( phrase )
+#def runTTSScript( phrase ):
+#    ttsscr.main( phrase )
 
 def get_sentiment( data ):
     lst = [runLangScript(get_title(data, index)) for index in range(8)]
