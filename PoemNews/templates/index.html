@@ -116,17 +116,21 @@ https://templatemo.com/tm-521-get-ready
                          <div class="home-info">
                            <a href="{{link}}"><h1>{{headline}}</h1></a>
                            <br>
-                           {% if sentiment >= 0 %}
-                             <h1 style="color: green"> {{sentiment}} </h1>
-                            {% else %}
-                              <h1 style="color: red"> {{sentiment}} </h1>
-                            {% endif %}
+                           <div class="container2">
+                             {% if sentiment > 0 %}
+                               <h1 title="Subreddit's average emotional tone: Positive" style="color: green"> {{sentiment}} </h1>
+                              {% elif sentiment < 0 %}
+                                <h1 title="Subreddit's average emotional tone: Negative" style="color: red"> {{sentiment}} </h1>
+                              {%else%}
+                              <h1 title="Subreddit's average emotional value: Neutral" style="color:yellow"> {{sentiment}} </h1>
+                              {% endif %}
+                            </div>
                            <br>
                               <h1> The Daily Sentiment </h1>
                               <div class="subscribe-form">
                                 <form action"{{ url_for('.main') }}" method="post">
                                   <input type = "text" name = "subreddit" class="form-control" placeholder="Enter New Keywords" required="">
-                                  <button type="submit" value="Submit" class="form-control"><i class="fa fa-envelope-o"></i></button>
+                                  <button type="submit" value="Submit" class="form-control"><i class="fa fa-reddit"></i></button>
                                 </form>
                               </div>
 
