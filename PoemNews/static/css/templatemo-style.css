@@ -5,7 +5,7 @@ Get Ready Template
 https://templatemo.com/tm-521-get-ready
 
 */
-  
+
   @import url('https://fonts.googleapis.com/css?family=Poppins:300,400');
 
   body {
@@ -24,7 +24,7 @@ https://templatemo.com/tm-521-get-ready
 
 
   /*---------------------------------------
-     TYPOGRAPHY              
+     TYPOGRAPHY
   -----------------------------------------*/
 
   h1,h2,h3,h4,h5,h6 {
@@ -52,7 +52,7 @@ https://templatemo.com/tm-521-get-ready
 
 
   /*---------------------------------------
-     GENERAL               
+     GENERAL
   -----------------------------------------*/
 
   html{
@@ -87,7 +87,7 @@ https://templatemo.com/tm-521-get-ready
   }
 
   .overlay {
-    background: linear-gradient(to top right, #d2b48c, #000000);
+    background: linear-gradient(to top right, #7f00ff, #6a477d);
     opacity: 0.9;
     position: absolute;
     top: 0;
@@ -147,7 +147,7 @@ https://templatemo.com/tm-521-get-ready
 
 
   /*---------------------------------------
-       PRE LOADER              
+       PRE LOADER
   -----------------------------------------*/
 
   .preloader {
@@ -196,7 +196,7 @@ https://templatemo.com/tm-521-get-ready
 
 
   /*---------------------------------------
-      MENU              
+      MENU
   -----------------------------------------*/
 
   .menu, .menu-bg, .menu-burger {
@@ -317,7 +317,7 @@ https://templatemo.com/tm-521-get-ready
 
 
   /*---------------------------------------
-      HOME          
+      HOME
   -----------------------------------------*/
 
   #home {
@@ -347,7 +347,7 @@ https://templatemo.com/tm-521-get-ready
     width: 100%;
     height: 100vh;
   }
-  
+
   .countdown {
     text-align: center;
     margin: 50px 0;
@@ -374,7 +374,7 @@ https://templatemo.com/tm-521-get-ready
 
 
   /*---------------------------------------
-     SOCIAL ICON              
+     SOCIAL ICON
   -----------------------------------------*/
 
   .social-icon {
@@ -419,7 +419,7 @@ https://templatemo.com/tm-521-get-ready
 
 
   /*---------------------------------------
-     RESPONSIVE STYLES              
+     RESPONSIVE STYLES
   -----------------------------------------*/
 
   @media screen and (max-width: 480px) {
