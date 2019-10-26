@@ -112,12 +112,13 @@ https://templatemo.com/tm-521-get-ready
 
                     <div class="col-md-12 col-sm-12">
                          <div class="home-info">
+                           <h1>{{data}}</h1>
                               <h1> Poem of the Day </h1>
 
                               <div class="subscribe-form">
-                                <form action="" method="get">
-                                  <input type="email" name="email" class="form-control" placeholder="Enter New Keywords" required="">
-                                  <button type="submit" class="form-control"><i class="fa fa-envelope-o"></i></button>
+                                <form action"{{ url_for('.main') }}" method="post">
+                                  <input type = "text" name = "subreddit" class="form-control" placeholder="Enter New Keywords" required="">
+                                  <button type="submit" value="Submit" class="form-control"><i class="fa fa-envelope-o"></i></button>
                                 </form>
                               </div>
 
