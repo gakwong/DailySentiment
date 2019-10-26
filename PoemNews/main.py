@@ -17,28 +17,35 @@ def main():
         print(newsub)
         data = runWebscrape(newsub)
         print(data.to_string())
-        new_data = convert_string(data, 0)
-        return render_template("index.html", data = new_data)
+        title = get_title(data, 0)
+        url = get_link(data, 0)
+        return render_template("index.html", headline = title, link = url)
     else:
         #a = get database info
         data = runWebscrape("WorldNews")
         print(data.to_string())
-        new_data = convert_string(data, 0)
+        title = get_title(data, 0)
+        url = get_link(data, 0)
         #hlOneImg = data.iloc[0]['title']
         #hlTwoImg = data.iloc[1]['title']
         #imgscr.main(hlOneImg);
         #imgscr.main(hlTwoImg);
-        return render_template('index.html', data = new_data)
+        return render_template('index.html', headline = title, link = url)
 
 def runWebscrape( subreddit ):
     dict = wbscr.main(subreddit)
     return dict
     #print(dict.to_string())
 
-def convert_string(data, index):
+def get_title(data, index):
     new_data = data['title']
-    s1 = str(new_data[index])
-    return s1
+    title = str(new_data[index])
+    return title
+
+def get_link(data, index):
+    new_data = data['url']
+    url = str(new_data[index])
+    return url
 
 '''
 if __name__ == '__main__':
