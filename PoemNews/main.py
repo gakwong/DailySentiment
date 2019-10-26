@@ -5,6 +5,7 @@ from werkzeug.exceptions import abort
 from werkzeug import secure_filename
 import pandas as pd
 import numpy as np
+import time
 from . import webscrape_script as wbscr
 from . import image_script as imgscr
 from . import nlanguage_script as langscr
@@ -19,7 +20,7 @@ def main():
         newsub = request.form['subreddit']
         #print(newsub)
         data = runWebscrape(newsub)
-        print(data.to_string())
+        #print(data.to_string())
         title = get_title(data, 0)
         url = get_link(data, 0)
         sentiment = np.round(get_sentiment(data),5)
@@ -27,7 +28,7 @@ def main():
     else:
         #a = get database info
         data = runWebscrape("WorldNews")
-        print(data.to_string())
+        #print(data.to_string())
         title = get_title(data, 0)
         url = get_link(data, 0)
         sentiment = np.round(get_sentiment(data), 5)

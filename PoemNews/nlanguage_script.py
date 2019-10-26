@@ -11,8 +11,8 @@ def helper(annotations):
 
     for index, sentence in enumerate(annotations.sentences):
         sentence_sentiment = sentence.sentiment.score
-        print('Sentence {} has a sentiment score of {}'.format(
-            index, sentence_sentiment))
+        #print('Sentence {} has a sentiment score of {}'.format(
+        #    index, sentence_sentiment))
 
     #print('Overall Sentiment: score of {} with magnitude of {}'.format(
         #score, magnitude))
