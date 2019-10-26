@@ -22,8 +22,21 @@ def main( sub ):
 
     # subreddit
     subreddit = reddit.subreddit(sub)
+    #subreddit = next(x for x in reddit.subreddit(sub).hot() if not x.stickied)
+    #hot_subreddit = subreddit.hot(limit=10)
 
-    hot_subreddit = subreddit.hot(limit=10)
+    # ignores pinned posts
+    hot_subreddit = []
+    stickied_post = []
+
+    for sticky in subreddit.hot(limit=10):
+        if sticky.stickied:
+            stickied_post.append(sticky.id)
+
+    for submission in subreddit.hot(limit=10):
+        if submission.id not in stickied_post:
+            hot_subreddit.append(submission)
+    #
 
     for submission in subreddit.hot(limit=1):
         print(submission.title, submission.id)
