@@ -12,8 +12,8 @@ bp = Blueprint('main', __name__)
 @bp.route("/")
 def main():
     #a = get database info
-    runWebscrape("WorldNews")
-    return render_template('index.html')
+    data = runWebscrape("WorldNews")
+    return render_template('index.html', data = data )
 
 def runWebscrape( subreddit ):
     dict = wbs.main(subreddit)
