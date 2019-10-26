@@ -51,5 +51,7 @@ def main():
 
     topics_data.to_json(r'reddit_data.json')
 
+    return topics_data;
+
 if __name__ == '__main__':
     main()
