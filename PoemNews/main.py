@@ -4,7 +4,8 @@ from flask import (
 from werkzeug.exceptions import abort
 from werkzeug import secure_filename
 import pandas as pd
-from . import webscrape_script as wbs
+from . import webscrape_script as wbscr
+from . import image_script as imgscr
 
 #app = Flask(__name__)
 bp = Blueprint('main', __name__)
@@ -13,11 +14,17 @@ bp = Blueprint('main', __name__)
 def main():
     #a = get database info
     data = runWebscrape("WorldNews")
+    print(data.to_string())
+    hlOneImg = data.iloc[0]['title']
+    hlTwoImg = data.iloc[1]['title']
+    imgscr.main(hlOneImg);
+    imgscr.main(hlTwoImg);
     return render_template('index.html', data = data )
 
 def runWebscrape( subreddit ):
-    dict = wbs.main(subreddit)
-    print(dict.to_string())
+    dict = wbscr.main(subreddit)
+    return dict
+    #print(dict.to_string())
 
 '''
 if __name__ == '__main__':

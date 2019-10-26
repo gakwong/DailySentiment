@@ -1,11 +1,8 @@
 #!/usr/bin/python3
 
 from google_images_download import google_images_download
-import scripts
 
 response = google_images_download.googleimagesdownload()
-
-search_queries = scripts.genKeywords()
 
 def downloadimages(query):
     # keywords is the search query
@@ -18,9 +15,9 @@ def downloadimages(query):
     # of images to download. ("tall, square, wide, panoramic")
     arguments = {"keywords": query,
                  "format": "jpg",
-                 "limit":4,
+                 "limit":1,
                  "print_urls":True,
-                 "size": "medium",
+                 "size": "large",
                  "aspect_ratio": "panoramic"}
 
     try:
@@ -30,7 +27,7 @@ def downloadimages(query):
     except FileNotFoundError:
         arguments = {"keywords": query,
                      "format": "jpg",
-                     "limit":4,
+                     "limit":1,
                      "print_urls":True,
                      "size": "medium"}
 
@@ -42,7 +39,5 @@ def downloadimages(query):
         except:
             pass
 
-def main():
-    for query in search_queries:
-        downloadimages(query)
-        print()
+def main(hl_keyword):
+    downloadimages(hl_keyword)
