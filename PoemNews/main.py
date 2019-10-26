@@ -7,6 +7,7 @@ import pandas as pd
 from . import webscrape_script as wbscr
 from . import image_script as imgscr
 from . import nlanguage_script as langscr
+from . import tts_script as ttsscr
 
 #app = Flask(__name__)
 bp = Blueprint('main', __name__)
@@ -20,7 +21,8 @@ def main():
         print(data.to_string())
         title = get_title(data, 0)
         url = get_link(data, 0)
-        runLangScript( title + get_title(data, 1) + get_title(data, 2))
+        #runTTSScript( title )
+        #runLangScript( title )
         return render_template("index.html", headline = title, link = url)
     else:
         #a = get database info
@@ -28,7 +30,8 @@ def main():
         print(data.to_string())
         title = get_title(data, 0)
         url = get_link(data, 0)
-        runLangScript( title + get_title(data, 1) + get_title(data, 2))
+        #runTTSScript( title )
+        #runLangScript( title )
         #hlOneImg = data.iloc[0]['title']
         #hlTwoImg = data.iloc[1]['title']
         #imgscr.main(hlOneImg);
@@ -43,6 +46,8 @@ def runWebscrape( subreddit ):
 def runLangScript( phrase ):
     langscr.main( phrase )
 
+def runTTSScript( phrase ):
+    ttsscr.main( phrase )
 
 def get_title(data, index):
     new_data = data['title']
