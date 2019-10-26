@@ -115,7 +115,11 @@ https://templatemo.com/tm-521-get-ready
                          <div class="home-info">
                            <a href="{{link}}"><h1>{{headline}}</h1></a>
                            <br>
-                           <h1 style="color: red"> {{sentiment}} </h1>
+                           {% if sentiment >= 0 %}
+                             <h1 style="color: green"> {{sentiment}} </h1>
+                            {% else %}
+                              <h1 style="color: red"> {{sentiment}} </h1>
+                            {% endif %}
                            <br>
                               <h1> The Daily Sentiment </h1>
                               <div class="subscribe-form">
