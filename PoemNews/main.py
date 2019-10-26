@@ -12,9 +12,12 @@ bp = Blueprint('main', __name__)
 @bp.route("/")
 def main():
     #a = get database info
-    dict = wbs.main("WorldNews")
-    print(dict.to_string())
+    runWebscrape("WorldNews")
     return render_template('index.html')
+
+def runWebscrape( subreddit ):
+    dict = wbs.main(subreddit)
+    print(dict.to_string())
 
 '''
 if __name__ == '__main__':
