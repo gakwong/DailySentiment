@@ -15,10 +15,10 @@ def main():
     #a = get database info
     data = runWebscrape("WorldNews")
     print(data.to_string())
-    hlOneImg = data.iloc[0]['title']
-    hlTwoImg = data.iloc[1]['title']
-    imgscr.main(hlOneImg);
-    imgscr.main(hlTwoImg);
+    #hlOneImg = data.iloc[0]['title']
+    #hlTwoImg = data.iloc[1]['title']
+    #imgscr.main(hlOneImg);
+    #imgscr.main(hlTwoImg);
     return render_template('index.html', data = data )
 
 def runWebscrape( subreddit ):
