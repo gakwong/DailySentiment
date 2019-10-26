@@ -29,7 +29,7 @@ def main( sub ):
     hot_subreddit = []
     stickied_post = []
 
-    for sticky in subreddit.hot(limit=10):
+    for sticky in subreddit.hot(limit=50):
         if sticky.stickied:
             stickied_post.append(sticky.id)
 
