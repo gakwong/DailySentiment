@@ -1,7 +1,7 @@
 from flask import (
     Blueprint, flash, g, redirect, render_template, request, url_for
 )
-app = Flask(__name__)
+#app = Flask(__name__)
 bp = Blueprint('Poem', __name__)
 
 @bp.route("/")
