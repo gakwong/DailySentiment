@@ -30,7 +30,7 @@ def main():
         print(data.to_string())
         title = get_title(data, 0)
         url = get_link(data, 0)
-        sentiment = np.round(get_sentiment(data))
+        sentiment = np.round(get_sentiment(data), 5)
         #hlOneImg = data.iloc[0]['title']
         #hlTwoImg = data.iloc[1]['title']
         #imgscr.main(hlOneImg);
