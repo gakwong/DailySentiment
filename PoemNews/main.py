@@ -10,7 +10,7 @@ bp = Blueprint('main', __name__)
 @bp.route("/")
 def main():
     #a = get database info
-    return render_template('template/index.html')
+    return render_template('index.html')
 
 '''
 if __name__ == '__main__':
