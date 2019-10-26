@@ -4,6 +4,7 @@ from flask import (
 from werkzeug.exceptions import abort
 from werkzeug import secure_filename
 import pandas as pd
+import numpy as np
 from . import webscrape_script as wbscr
 from . import image_script as imgscr
 from . import nlanguage_script as langscr
@@ -21,22 +22,20 @@ def main():
         print(data.to_string())
         title = get_title(data, 0)
         url = get_link(data, 0)
-        #runTTSScript( title )
-        #runLangScript( title )
-        return render_template("index.html", headline = title, link = url)
+        sentiment = get_sentiment(data)
+        return render_template("index.html", headline = title, link = url, sentiment = sentiment)
     else:
         #a = get database info
         data = runWebscrape("WorldNews")
         print(data.to_string())
         title = get_title(data, 0)
         url = get_link(data, 0)
-        #runTTSScript( title )
-        #runLangScript( title )
+        sentiment = get_sentiment(data)
         #hlOneImg = data.iloc[0]['title']
         #hlTwoImg = data.iloc[1]['title']
         #imgscr.main(hlOneImg);
         #imgscr.main(hlTwoImg);
-        return render_template('index.html', headline = title, link = url)
+        return render_template('index.html', headline = title, link = url, sentiment = sentiment)
 
 def runWebscrape( subreddit ):
     dict = wbscr.main(subreddit)
@@ -44,10 +43,14 @@ def runWebscrape( subreddit ):
     #print(dict.to_string())
 
 def runLangScript( phrase ):
-    langscr.main( phrase )
+    return langscr.main( phrase )
 
 def runTTSScript( phrase ):
     ttsscr.main( phrase )
+
+def get_sentiment( data ):
+    lst = [runLangScript(get_title(data, index)) for index in range(8)]
+    return np.average(lst)
 
 def get_title(data, index):
     new_data = data['title']

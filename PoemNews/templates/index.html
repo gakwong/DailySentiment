@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-     <title>News Poem - All the News That's Fit to Poem</title>
+     <title>The Daily Sentiment</title>
 <!--
 
 Get Ready Template
@@ -71,7 +71,7 @@ https://templatemo.com/tm-521-get-ready
        <div class="container">
          <div class="row">
            <div class="col-md-offset-2 col-md-4 col-sm-6">
-            <h1>News Poem</h1>
+            <h1>The Daily Sentiment</h1>
              <ul class="menu">
                 <li><a href="/">Home</a></li>
                 <li><a href="#">Alan Tsui</a></li>
@@ -83,7 +83,7 @@ https://templatemo.com/tm-521-get-ready
 
            <div class="col-md-4 col-sm-6">
              <address>
-               <h1>Our Studio</h1>
+               <h1>Our Stadium</h1>
                <p>2227 Piedmont Ave, <br> Berkeley, CA 94720 </p>
                <div class="google-map">
                   <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3149.5568988676437!2d-122.2529669848773!3d37.870657079742145!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80857c3085b6bb71%3A0x15470208dbfb10ec!2sCalifornia%20Memorial%20Stadium!5e0!3m2!1sen!2sus!4v1572084623780!5m2!1sen!2sus" allowfullscreen></iframe>
@@ -114,8 +114,10 @@ https://templatemo.com/tm-521-get-ready
                     <div class="col-md-12 col-sm-12">
                          <div class="home-info">
                            <a href="{{link}}"><h1>{{headline}}</h1></a>
-                           <br></br>
-                              <h1> Poem of the Day </h1>
+                           <br>
+                           <h1 style="color: red"> {{sentiment}} </h1>
+                           <br>
+                              <h1> The Daily Sentiment </h1>
                               <div class="subscribe-form">
                                 <form action"{{ url_for('.main') }}" method="post">
                                   <input type = "text" name = "subreddit" class="form-control" placeholder="Enter New Keywords" required="">
