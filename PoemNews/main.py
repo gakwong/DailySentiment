@@ -38,6 +38,7 @@ def main():
         #imgscr.main(hlTwoImg);
         return render_template('index.html', headline = title, link = url, sentiment = sentiment)
 
+
 @bp.route("/method")
 def method():
     return render_template('method.html')
