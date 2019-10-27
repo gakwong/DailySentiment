@@ -64,6 +64,6 @@ def main( sub ):
     _timestamp = topics_data["created"].apply(get_date)
     topics_data = topics_data.assign(timestamp = _timestamp)
 
-    topics_data.to_json(r'reddit_data.json')
+    #topics_data.to_json('reddit_data.json')
 
     return topics_data;

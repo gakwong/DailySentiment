@@ -1,20 +1,16 @@
 from flask import (
-    Blueprint, flash, g, redirect, render_template, request, url_for
+    Flask, Blueprint, flash, g, redirect, render_template, request, url_for
 )
 from werkzeug.exceptions import abort
-from werkzeug import secure_filename
+from werkzeug.utils import secure_filename
 import pandas as pd
 import numpy as np
-import time
-from . import webscrape_script as wbscr
-from . import image_script as imgscr
-from . import nlanguage_script as langscr
-#from . import tts_script as ttsscr
+import webscrape_script as wbscr
+import image_script as imgscr
+import nlanguage_script as langscr
 
-#app = Flask(__name__)
-bp = Blueprint('main', __name__)
-
-@bp.route("/", methods=['POST', 'GET'])
+app = Flask(__name__, instance_relative_config=True, static_folder='static', static_url_path='/static')
+@app.route('/', methods=['GET', 'POST'])
 def main():
     if request.method == 'POST':
         newsub = request.form['subreddit']
@@ -39,20 +35,16 @@ def main():
         return render_template('index.html', headline = title, link = url, sentiment = sentiment)
 
 
-@bp.route("/method")
+@app.route("/method")
 def method():
     return render_template('method.html')
 
 def runWebscrape( subreddit ):
     dict = wbscr.main(subreddit)
     return dict
-    #print(dict.to_string())
 
 def runLangScript( phrase ):
     return langscr.main( phrase )
-
-#def runTTSScript( phrase ):
-#    ttsscr.main( phrase )
 
 def get_sentiment( data ):
     lst = [runLangScript(get_title(data, index)) for index in range(8)]
@@ -68,10 +60,6 @@ def get_link(data, index):
     url = str(new_data[index])
     return url
 
-'''
-if __name__ == '__main__':
-    app.run(debug=True)
 
-@bp.route("")
-def index():
-'''
+if __name__ == '__main__':
+    app.run(host='127.0.0.1', port=8080, debug=True)
