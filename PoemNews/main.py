@@ -23,7 +23,7 @@ def main():
         title = get_title(data, 0)
         url = get_link(data, 0)
         sentiment = np.round(get_sentiment(data),5)
-        return render_template("index.html", headline = title, link = url, sentiment = sentiment)
+        return render_template("index.html", headline = title, link = url, sentiment = sentiment, srname = newsub)
     else:
         #a = get database info
         data = runWebscrape("WorldNews")
@@ -35,7 +35,7 @@ def main():
         #hlTwoImg = data.iloc[1]['title']
         #imgscr.main(hlOneImg);
         #imgscr.main(hlTwoImg);
-        return render_template('index.html', headline = title, link = url, sentiment = sentiment)
+        return render_template('index.html', headline = title, link = url, sentiment = sentiment, srname = "WorldNews")
 
 @bp.route("/method")
 def method():
