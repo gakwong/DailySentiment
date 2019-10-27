@@ -16,11 +16,11 @@ def main():
         newsub = request.form['subreddit']
         #print(newsub)
         data = runWebscrape(newsub)
-        #print(data.to_string())
         title = get_title(data, 0)
         url = get_link(data, 0)
         sentiment = np.round(get_sentiment(data),5)
-        return render_template("index.html", headline = title, link = url, sentiment = sentiment)
+        sub_link = "https://www.reddit.com/r/" + newsub
+        return render_template("index.html", headline = title, link = url, sentiment = sentiment, subreddit = newsub, sub_link= sub_link)
     else:
         #a = get database info
         data = runWebscrape("WorldNews")
@@ -32,7 +32,7 @@ def main():
         #hlTwoImg = data.iloc[1]['title']
         #imgscr.main(hlOneImg);
         #imgscr.main(hlTwoImg);
-        return render_template('index.html', headline = title, link = url, sentiment = sentiment)
+        return render_template('index.html', headline = title, link = url, sentiment = sentiment, subreddit="WorldNews", sub_link = "https://www.reddit.com/r/worldnews/")
 
 
 @app.route("/method")

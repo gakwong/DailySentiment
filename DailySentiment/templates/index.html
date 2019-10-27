@@ -115,7 +115,7 @@ https://templatemo.com/tm-521-get-ready
 
                     <div class="col-md-12 col-sm-12">
                          <div class="home-info">
-                           <a href="{{link}}"><h1>{{headline}}</h1></a>
+                           <a target=="_blank" href="{{link}}"><h1>{{headline}}</h1></a>
                            <br>
                            <div class="container2">
                              {% if sentiment > 0 %}
@@ -128,6 +128,7 @@ https://templatemo.com/tm-521-get-ready
                             </div>
                            <br>
                               <h1> The Daily Sentiment </h1>
+                              <h3> <a target="_blank" style="text-decoration: none; color: orange" href={{sub_link}} > Current subreddit: {{subreddit}} </a> </h3>
                               <div class="subscribe-form">
                                 <form action"{{ url_for('.main') }}" method="post">
                                   <input type = "text" name = "subreddit" class="form-control" placeholder="Enter New Keywords" required="">
