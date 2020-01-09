@@ -8,6 +8,8 @@ import numpy as np
 import webscrape_script as wbscr
 import image_script as imgscr
 import nlanguage_script as langscr
+import requests
+#import urlib2
 
 app = Flask(__name__, instance_relative_config=True, static_folder='static', static_url_path='/static')
 @app.route('/', methods=['GET', 'POST'])
@@ -20,7 +22,10 @@ def main():
         url = get_link(data, 0)
         sentiment = np.round(get_sentiment(data),5)
         sub_link = "https://www.reddit.com/r/" + newsub
-        return render_template("index.html", headline = title, link = url, sentiment = sentiment, subreddit = newsub, sub_link= sub_link)
+        exists = check_url(sub_link)
+        if not exists:
+            sub_link =  "https://www.reddit.com/r/worldnews/"
+        return render_template("index.html", headline = title, link = url, sentiment = sentiment, subreddit = newsub, sub_link= sub_link, exists= exists)
     else:
         #a = get database info
         data = runWebscrape("WorldNews")
@@ -32,7 +37,7 @@ def main():
         #hlTwoImg = data.iloc[1]['title']
         #imgscr.main(hlOneImg);
         #imgscr.main(hlTwoImg);
-        return render_template('index.html', headline = title, link = url, sentiment = sentiment, subreddit="WorldNews", sub_link = "https://www.reddit.com/r/worldnews/")
+        return render_template('index.html', headline = title, link = url, sentiment = sentiment, subreddit="WorldNews", sub_link = "https://www.reddit.com/r/worldnews/", exists=True)
 
 
 @app.route("/method")
@@ -59,6 +64,14 @@ def get_link(data, index):
     new_data = data['url']
     url = str(new_data[index])
     return url
+
+def check_url(link):
+    request = requests.get(link)
+    if request.status_code == 200:
+        return True
+    else:
+        return False
+
 
 
 if __name__ == '__main__':
