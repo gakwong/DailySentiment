@@ -26,7 +26,7 @@ def main():
         #if not exists:
         #    sub_link =  "https://www.reddit.com/r/worldnews/"
         exists = True
-        return render_template("index.html", headline = title, link = url, sentiment = sentiment, subreddit = newsub, sub_link= sub_link, exists= exists)
+        return render_template("index.html", headline = title, link = url, sentiment = sentiment, subreddit = newsub, sub_link= sub_link)
     else:
         #a = get database info
         data = runWebscrape("WorldNews")
