@@ -22,9 +22,10 @@ def main():
         url = get_link(data, 0)
         sentiment = np.round(get_sentiment(data),5)
         sub_link = "https://www.reddit.com/r/" + newsub
-        exists = check_url(sub_link)
-        if not exists:
-            sub_link =  "https://www.reddit.com/r/worldnews/"
+        #exists = check_url(sub_link)
+        #if not exists:
+        #    sub_link =  "https://www.reddit.com/r/worldnews/"
+        exists = True
         return render_template("index.html", headline = title, link = url, sentiment = sentiment, subreddit = newsub, sub_link= sub_link, exists= exists)
     else:
         #a = get database info
